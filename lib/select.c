@@ -75,6 +75,10 @@ int Curl_ack_eintr = 0;
  */
 int Curl_wait_ms(int timeout_ms)
 {
+#ifdef __vita__
+  sceKernelDelayThread(timeout_ms * 1000);
+  return 0;
+#else
 #if !defined(MSDOS) && !defined(USE_WINSOCK)
 #ifndef HAVE_POLL_FINE
   struct timeval pending_tv;
@@ -121,6 +125,7 @@ int Curl_wait_ms(int timeout_ms)
   if(r)
     r = -1;
   return r;
+#endif
 }
 
 /*

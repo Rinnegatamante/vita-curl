@@ -1429,8 +1429,6 @@ AC_DEFUN([CURL_CHECK_FUNC_RECV], [
         [Define to 1 if you have the recv function.])
       curl_cv_func_recv="yes"
     fi
-  else
-    AC_MSG_ERROR([Unable to link function recv])
   fi
 ])
 
@@ -1596,8 +1594,6 @@ AC_DEFUN([CURL_CHECK_FUNC_SEND], [
         [Define to 1 if you have the send function.])
       curl_cv_func_send="yes"
     fi
-  else
-    AC_MSG_ERROR([Unable to link function send])
   fi
 ])
 
@@ -1765,7 +1761,7 @@ AC_DEFUN([TYPE_IN_ADDR_T], [
     dnl in_addr_t not available
     AC_CACHE_CHECK([for in_addr_t equivalent],
       [curl_cv_in_addr_t_equiv], [
-      curl_cv_in_addr_t_equiv="unknown"
+      curl_cv_in_addr_t_equiv="unsigned"
       for t in "unsigned long" int size_t unsigned long; do
         if test "$curl_cv_in_addr_t_equiv" = "unknown"; then
           AC_LINK_IFELSE([
@@ -2019,7 +2015,7 @@ AC_DEFUN([CURL_CHECK_LIBS_CONNECT], [
   AC_REQUIRE([CURL_INCLUDES_WINSOCK2])dnl
   AC_MSG_CHECKING([for connect in libraries])
   tst_connect_save_LIBS="$LIBS"
-  tst_connect_need_LIBS="unknown"
+  tst_connect_need_LIBS=""
   for tst_lib in '' '-lsocket' ; do
     if test "$tst_connect_need_LIBS" = "unknown"; then
       LIBS="$tst_lib $tst_connect_save_LIBS"
@@ -2041,10 +2037,6 @@ AC_DEFUN([CURL_CHECK_LIBS_CONNECT], [
   LIBS="$tst_connect_save_LIBS"
   #
   case X-"$tst_connect_need_LIBS" in
-    X-unknown)
-      AC_MSG_RESULT([cannot find connect])
-      AC_MSG_ERROR([cannot find connect function in libraries.])
-      ;;
     X-)
       AC_MSG_RESULT([yes])
       ;;

@@ -74,6 +74,7 @@
 
 void Curl_ntlm_wb_cleanup(struct connectdata *conn)
 {
+  #ifndef __vita__
   if(conn->ntlm_auth_hlpr_socket != CURL_SOCKET_BAD) {
     sclose(conn->ntlm_auth_hlpr_socket);
     conn->ntlm_auth_hlpr_socket = CURL_SOCKET_BAD;
@@ -108,10 +109,12 @@ void Curl_ntlm_wb_cleanup(struct connectdata *conn)
   conn->challenge_header = NULL;
   free(conn->response_header);
   conn->response_header = NULL;
+  #endif
 }
 
 static CURLcode ntlm_wb_init(struct connectdata *conn, const char *userp)
 {
+  #ifndef __vita__
   curl_socket_t sockfds[2];
   pid_t child_pid;
   const char *username;
@@ -250,6 +253,7 @@ static CURLcode ntlm_wb_init(struct connectdata *conn, const char *userp)
 done:
   free(domain);
   free(ntlm_auth_alloc);
+  #endif
   return CURLE_REMOTE_ACCESS_DENIED;
 }
 
