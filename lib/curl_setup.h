@@ -35,12 +35,6 @@
 
 #include <netdb.h>
 #include <psp2/net/net.h>
-#define sockaddr_in SceNetSockaddrIn
-#define in_addr     SceNetInAddr
-#define HAVE_SOCKET
-#define IPPROTO_UDP SCE_NET_IPPROTO_UDP
-#define HAVE_SELECT
-
 #endif
 
 /*
