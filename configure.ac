@@ -846,6 +846,22 @@ then
                ])
 fi
 
+if test "$HAVE_GETHOSTBYNAME" != "1"
+then
+case $host in
+  *-vita-*)
+    dnl This is for psvita with a stubbed DNS implementation
+    AC_MSG_CHECKING([for gethostbyname for psvita])
+    HAVE_GETHOSTBYNAME=1
+    AC_MSG_RESULT([yes])
+    ;;
+esac
+fi
+
+if test "$HAVE_GETHOSTBYNAME" != "1"; then
+  AC_MSG_ERROR([couldn't find libraries for gethostbyname()])
+fi
+
 CURL_CHECK_LIBS_CONNECT
 
 CURL_NETWORK_LIBS=$LIBS
@@ -1559,8 +1575,15 @@ if test "$curl_ssl_msg" = "$init_ssl_msg" && test X"$OPT_SSL" != Xno; then
     dnl This is only reasonable to do if crypto actually is there: check for
     dnl SSL libs NOTE: it is important to do this AFTER the crypto lib
 
-    # AC_CHECK_LIB(ssl, SSL_connect)
-    ac_cv_lib_ssl_SSL_connect=yes
+    case $host in
+      *-vita-*)
+        # force enable for psvita
+        ac_cv_lib_ssl_SSL_connect=yes
+        ;;
+      *)
+        AC_CHECK_LIB(ssl, SSL_connect)
+        ;;
+    esac
 
     if test "$ac_cv_lib_ssl_SSL_connect" != yes; then
         dnl we didn't find the SSL lib, try the RSAglue/rsaref stuff

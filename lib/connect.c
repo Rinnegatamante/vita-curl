@@ -1255,8 +1255,12 @@ curl_socket_t Curl_getconnectinfo(struct Curl_easy *data,
     else if(sockfd != CURL_SOCKET_BAD) {
       /* use the socket */
       char buf;
+#if !defined(__vita__)
       if(recv((RECV_TYPE_ARG1)sockfd, (RECV_TYPE_ARG2)&buf,
               (RECV_TYPE_ARG3)1, (RECV_TYPE_ARG4)MSG_PEEK) == 0) {
+#else
+      if(recv(sockfd, &buf, 1, MSG_PEEK) == 0) {
+#endif
         return CURL_SOCKET_BAD;   /* FIN received */
       }
     }

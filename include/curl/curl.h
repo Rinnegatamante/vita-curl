@@ -34,10 +34,6 @@
 #define CURL_STRICTER
 #endif
 
-#ifdef __vita__
-#include "vita.h"
-#endif
-
 #include "curlver.h"         /* libcurl version defines   */
 #include "curlbuild.h"       /* libcurl build definitions */
 #include "curlrules.h"       /* libcurl rules enforcement */
@@ -83,7 +79,7 @@
 #include <sys/select.h>
 #endif
 
-#if !defined(WIN32) && !defined(_WIN32_WCE) && !defined(__vita__)
+#if !defined(WIN32) && !defined(_WIN32_WCE)
 #include <sys/socket.h>
 #endif
 

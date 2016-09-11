@@ -1429,6 +1429,15 @@ AC_DEFUN([CURL_CHECK_FUNC_RECV], [
         [Define to 1 if you have the recv function.])
       curl_cv_func_recv="yes"
     fi
+  else
+    case "$host" in
+      *-vita-*)
+        curl_cv_func_recv="yes"
+        ;;
+      *)
+        AC_MSG_ERROR([Unable to link function recv])
+        ;;
+    esac
   fi
 ])
 
@@ -1594,6 +1603,15 @@ AC_DEFUN([CURL_CHECK_FUNC_SEND], [
         [Define to 1 if you have the send function.])
       curl_cv_func_send="yes"
     fi
+  else
+    case "$host" in
+      *-vita-*)
+        curl_cv_func_send="yes"
+        ;;
+      *)
+        AC_MSG_ERROR([Unable to link function send])
+        ;;
+    esac
   fi
 ])
 
@@ -1761,7 +1779,7 @@ AC_DEFUN([TYPE_IN_ADDR_T], [
     dnl in_addr_t not available
     AC_CACHE_CHECK([for in_addr_t equivalent],
       [curl_cv_in_addr_t_equiv], [
-      curl_cv_in_addr_t_equiv="unsigned"
+      curl_cv_in_addr_t_equiv="unknown"
       for t in "unsigned long" int size_t unsigned long; do
         if test "$curl_cv_in_addr_t_equiv" = "unknown"; then
           AC_LINK_IFELSE([
@@ -1802,6 +1820,11 @@ AC_DEFUN([TYPE_IN_ADDR_T], [
         fi
       done
     ])
+    case "$host" in
+      *-vita-*)
+        curl_cv_in_addr_t_equiv="unsigned"
+      ;;
+    esac
     case "$curl_cv_in_addr_t_equiv" in
       unknown)
         AC_MSG_ERROR([Cannot find a type to use in place of in_addr_t])
@@ -2015,7 +2038,7 @@ AC_DEFUN([CURL_CHECK_LIBS_CONNECT], [
   AC_REQUIRE([CURL_INCLUDES_WINSOCK2])dnl
   AC_MSG_CHECKING([for connect in libraries])
   tst_connect_save_LIBS="$LIBS"
-  tst_connect_need_LIBS=""
+  tst_connect_need_LIBS="unknown"
   for tst_lib in '' '-lsocket' ; do
     if test "$tst_connect_need_LIBS" = "unknown"; then
       LIBS="$tst_lib $tst_connect_save_LIBS"
@@ -2034,9 +2057,18 @@ AC_DEFUN([CURL_CHECK_LIBS_CONNECT], [
       ])
     fi
   done
+  case $host in
+    *-vita-*)
+      tst_connect_need_LIBS=""
+    ;;
+  esac
   LIBS="$tst_connect_save_LIBS"
   #
   case X-"$tst_connect_need_LIBS" in
+    X-unknown)
+      AC_MSG_RESULT([cannot find connect])
+      AC_MSG_ERROR([cannot find connect function in libraries.])
+      ;;
     X-)
       AC_MSG_RESULT([yes])
       ;;

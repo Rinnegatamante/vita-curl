@@ -83,10 +83,10 @@ if(curl_cv_recv)
     message(FATAL_ERROR "Cannot find proper types to use for recv args")
   endif("${curl_cv_func_recv_args}" STREQUAL "unknown")
 else(curl_cv_recv)
-  message(WARNING "Unable to link function recv")
+  message(FATAL_ERROR "Unable to link function recv")
 endif(curl_cv_recv)
 set(curl_cv_func_recv_args "${curl_cv_func_recv_args}" CACHE INTERNAL "Arguments for recv")
-set(HAVE_RECV 0)
+set(HAVE_RECV 1)
 
 check_c_source_compiles("${_source_epilogue}
 int main(void) {
@@ -151,10 +151,10 @@ if(curl_cv_send)
   endif("${curl_cv_func_send_args}" STREQUAL "unknown")
   set(SEND_QUAL_ARG2 "const")
 else(curl_cv_send)
-  message(WARNING "Unable to link function send")
+  message(FATAL_ERROR "Unable to link function send")
 endif(curl_cv_send)
 set(curl_cv_func_send_args "${curl_cv_func_send_args}" CACHE INTERNAL "Arguments for send")
-set(HAVE_SEND 0)
+set(HAVE_SEND 1)
 
 check_c_source_compiles("${_source_epilogue}
   int main(void) {
