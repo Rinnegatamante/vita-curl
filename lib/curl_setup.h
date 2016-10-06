@@ -31,10 +31,12 @@
 #define WIN32
 #endif
 
-
 #if defined(__vita__)
-#include "vita.h"
+
+#include <netdb.h>
+#include <psp2/net/net.h>
 #endif
+
 /*
  * Include configuration script results or hand-crafted
  * configuration file for platforms which lack config tool.

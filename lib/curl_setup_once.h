@@ -131,8 +131,6 @@ struct timeval {
 #define sread(x,y,z) (ssize_t)read((RECV_TYPE_ARG1)(x), \
                                    (RECV_TYPE_ARG2)(y), \
                                    (RECV_TYPE_ARG3)(z))
-#elif defined(__vita__)
-#define sread(x, y, z) sceNetRecv(x, y, z, 0)
 
 #elif defined(HAVE_RECV)
 /*
@@ -172,6 +170,7 @@ struct timeval {
                                    (RECV_TYPE_ARG4)(0))
 #endif
 #else /* HAVE_RECV */
+
 #ifndef sread
   /* */
   Error Missing_definition_of_macro_sread
@@ -185,8 +184,7 @@ struct timeval {
 #define swrite(x,y,z) (ssize_t)write((SEND_TYPE_ARG1)(x), \
                                     (SEND_TYPE_ARG2)(y), \
                                     (SEND_TYPE_ARG3)(z))
-#elif defined(__vita__)
-#define swrite(x, y, z) sceNetSend(x, y, z, 0)
+
 #elif defined(HAVE_SEND)
 #if !defined(SEND_TYPE_ARG1) || \
     !defined(SEND_QUAL_ARG2) || \
