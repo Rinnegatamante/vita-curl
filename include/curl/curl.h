@@ -1881,6 +1881,10 @@ typedef enum {
   CURLFORM_LASTENTRY /* the last unused */
 } CURLformoption;
 
+#ifdef __vita__
+#define CURLformoption uint32_t
+#endif
+
 #undef CFINIT /* done */
 
 /* structure to be used as parameter for CURLFORM_ARRAY */
