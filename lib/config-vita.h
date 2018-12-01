@@ -97,7 +97,7 @@
 /* #undef HAVE_ERR_H */
 #define HAVE_FCNTL 1
 #define HAVE_FCNTL_H 1
-#define HAVE_FCNTL_O_NONBLOCK 1
+/* #undef HAVE_FCNTL_O_NONBLOCK */
 #define HAVE_FDOPEN 1
 #define HAVE_FORK 1
 /* #undef HAVE_FREEADDRINFO */
@@ -222,7 +222,7 @@
 /* #undef HAVE_SETMODE */
 /* #undef HAVE_SETRLIMIT */
 #define HAVE_SETSOCKOPT 1
-/* #undef HAVE_SETSOCKOPT_SO_NONBLOCK */
+#define HAVE_SETSOCKOPT_SO_NONBLOCK 1
 /* #undef HAVE_SGTTY_H */
 /* #undef HAVE_SIGACTION */
 /* #undef HAVE_SIGINTERRUPT */
