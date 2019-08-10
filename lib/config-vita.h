@@ -100,14 +100,14 @@
 /* #undef HAVE_FCNTL_O_NONBLOCK */
 #define HAVE_FDOPEN 1
 #define HAVE_FORK 1
-/* #undef HAVE_FREEADDRINFO */
+#define HAVE_FREEADDRINFO 1
 /* #undef HAVE_FREEIFADDRS */
 /* #undef HAVE_FSETXATTR */
 /* #undef HAVE_FSETXATTR_5 */
 /* #undef HAVE_FSETXATTR_6 */
 /* #undef HAVE_FTRUNCATE */
 /* #undef HAVE_GAI_STRERROR */
-/* #undef HAVE_GETADDRINFO */
+#define HAVE_GETADDRINFO 1
 /* #undef HAVE_GETADDRINFO_THREADSAFE */
 /* #undef HAVE_GETEUID */
 /* #undef HAVE_GETHOSTBYADDR */
@@ -146,12 +146,12 @@
 /* #undef HAVE_IDN_FREE_H */
 /* #undef HAVE_IFADDRS_H */
 /* #undef HAVE_IF_NAMETOINDEX */
-/* #undef HAVE_INET_ADDR */
+#define HAVE_INET_ADDR 1
 /* #undef HAVE_INET_NTOA_R */
 /* #undef HAVE_INET_NTOA_R_2 */
 /* #undef HAVE_INET_NTOA_R_3 */
-/* #undef HAVE_INET_NTOP */
-/* #undef HAVE_INET_PTON */
+#define HAVE_INET_NTOP 1
+#define HAVE_INET_PTON 1
 #define HAVE_INTTYPES_H 1
 /* #undef HAVE_IOCTL */
 /* #undef HAVE_IOCTLSOCKET */
