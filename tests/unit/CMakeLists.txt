@@ -21,6 +21,7 @@ set(UT_SRC
   unit1603.c
 # Broken link on Linux
 #  unit1604.c
+  unit1620.c
   )
 
 set(UT_COMMON_FILES ../libtest/first.c ../libtest/test.h curlcheck.h)
@@ -29,7 +30,7 @@ include_directories(
   ${CURL_SOURCE_DIR}/tests/libtest
   ${CURL_SOURCE_DIR}/src
   ${CURL_BINARY_DIR}/lib          # To be able to reach "curl_config.h"
-  ${CURL_BINARY_DIR}/include      # To be able to reach "curl/curlbuild.h"
+  ${CURL_BINARY_DIR}/include      # To be able to reach "curl/curl.h"
 )
 
 foreach(_testfile ${UT_SRC})
@@ -40,7 +41,15 @@ foreach(_testfile ${UT_SRC})
   set_target_properties(${_testname}
       PROPERTIES COMPILE_DEFINITIONS "UNITTESTS")
 
-  add_test(NAME ${_testname}
-           COMMAND ${_testname} "http://www.google.com"
-           )
+  if(HIDES_CURL_PRIVATE_SYMBOLS)
+    set_target_properties(${_testname}
+      PROPERTIES
+      EXCLUDE_FROM_ALL TRUE
+      EXCLUDE_FROM_DEFAULT_BUILD TRUE
+    )
+  else()
+    add_test(NAME ${_testname}
+             COMMAND ${_testname} "http://www.google.com"
+    )
+  endif()
 endforeach()

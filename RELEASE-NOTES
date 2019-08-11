@@ -1,29 +1,14 @@
-Curl and libcurl 7.50.2
+curl and libcurl 7.65.3
 
- Public curl releases:         158
- Command line options:         185
- curl_easy_setopt() options:   224
- Public functions in libcurl:  61
- Contributors:                 1425
+ Public curl releases:         184
+ Command line options:         221
+ curl_easy_setopt() options:   268
+ Public functions in libcurl:  80
+ Contributors:                 1991
 
 This release includes the following bugfixes:
 
- o mbedtls: Added support for NTLM
- o SSH: fixed SFTP/SCP transfer problems [1]
- o multi: make Curl_expire() work with 0 ms timeouts
- o mk-ca-bundle.pl: -m keeps ca cert meta data in output [2]
- o TFTP: Fix upload problem with piped input [3]
- o CURLOPT_TCP_NODELAY: now enabled by default [4]
- o mbedtls: set verbose TLS debug when MBEDTLS_DEBUG is defined [5]
- o http2: always wait for readable socket
- o cmake: Enable win32 large file support by default
- o cmake: Enable win32 threaded resolver by default
- o winbuild: Avoid setting redundant CFLAGS to compile commands [6]
- o curl.h: make CURL_NO_OLDIES define CURL_STRICTER
- o docs: make more markdown files use .md extension
- o docs: CONTRIBUTE and LICENSE-MIXING were converted to markdown
- o winbuild: Allow changing C compiler via environment variable CC [7]
- o rtsp: accept any RTSP session id [8]
+ o progress: make the progress meter appear again [1]
 
 This release includes the following known bugs:
 
@@ -32,20 +17,11 @@ This release includes the following known bugs:
 This release would not have looked like this without help, code, reports and
 advice from friends like these:
 
-  Bill Nagel, Dan Donahue, Daniel Stenberg, Erik Janssen, Ray Satiro,
-  Sergei Nikulov, Serj Kalichev, Simon Warta, Tatsuhiro Tsujikawa,
-  Thomas Glanzmann, Tim Rühsen,
-  (11 contributors)
+  Chih-Hsuan Yen, Daniel Stenberg,
+  (2 contributors)
 
         Thanks! (and sorry if I forgot to mention someone)
 
 References to bug reports and discussions on issues:
 
- [1] = https://curl.haxx.se/mail/lib-2016-07/0057.html
- [2] = https://curl.haxx.se/bug/?i=937
- [3] = https://curl.haxx.se/bug/?i=857
- [4] = https://curl.haxx.se/mail/lib-2016-06/0143.html
- [5] = https://curl.haxx.se/mail/lib-2016-08/0017.html
- [6] = https://curl.haxx.se/bug/?i=949
- [7] = https://curl.haxx.se/bug/?i=952
- [8] = https://curl.haxx.se/mail/lib-2016-08/0076.html
+ [1] = https://curl.haxx.se/bug/?i=4122
