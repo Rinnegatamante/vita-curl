@@ -75,7 +75,7 @@
 
 /* #undef HAVE_ALARM */
 #define HAVE_ALLOCA_H 1
-/* #undef HAVE_ARPA_INET_H */
+#define HAVE_ARPA_INET_H 1
 /* #undef HAVE_ARPA_TFTP_H */
 #define HAVE_ASSERT_H 1
 /* #undef HAVE_BASENAME */
@@ -83,7 +83,7 @@
 /* #undef HAVE_CLOCK_GETTIME_MONOTONIC */
 /* #undef HAVE_CLOSESOCKET */
 /* #undef HAVE_CLOSESOCKET_CAMEL */
-/* #undef HAVE_CONNECT */
+#define HAVE_CONNECT 1
 #define HAVE_CRYPTO_CLEANUP_ALL_EX_DATA 1
 /* #undef HAVE_CRYPTO_H */
 /* #undef HAVE_CYASSL_CTX_USESUPPORTEDCURVE */
@@ -129,6 +129,7 @@
 /* #undef HAVE_GETPWUID_R */
 /* #undef HAVE_GETRLIMIT */
 /* #undef HAVE_GETSERVBYPORT_R */
+#define HAVE_GETSOCKNAME 1
 #define HAVE_GETTIMEOFDAY 1
 /* #undef HAVE_GLIBC_STRERROR_R */
 #define HAVE_GMTIME_R 1
@@ -328,6 +329,7 @@
 #define SEND_TYPE_ARG4 int
 #define SEND_TYPE_RETV int
 
+#define SIZEOF_CURL_OFF_T 8
 #define SIZEOF_INT 4
 #define SIZEOF_LONG 4
 /* #undef SIZEOF_LONG_LONG */
