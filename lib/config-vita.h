@@ -75,7 +75,7 @@
 
 /* #undef HAVE_ALARM */
 #define HAVE_ALLOCA_H 1
-/* #undef HAVE_ARPA_INET_H */
+#define HAVE_ARPA_INET_H 1
 /* #undef HAVE_ARPA_TFTP_H */
 #define HAVE_ASSERT_H 1
 /* #undef HAVE_BASENAME */
@@ -187,7 +187,7 @@
 /* #undef HAVE_MSG_NOSIGNAL */
 #define HAVE_NETDB_H 1
 #define HAVE_NETINET_IN_H 1
-/* #undef HAVE_NETINET_TCP_H */
+#define HAVE_NETINET_TCP_H 1
 /* #undef HAVE_NET_IF_H */
 /* #undef HAVE_NGHTTP2_NGHTTP2_H */
 /* #undef HAVE_NI_WITHSCOPEID */
